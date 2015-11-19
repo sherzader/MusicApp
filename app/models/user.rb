@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   validate :generate_session_token, :ensure_session_token,
                                     :reset_session_token!
 
+  # callback to set session token if none exists
+  after_initialize :ensure_session_token
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
   end
