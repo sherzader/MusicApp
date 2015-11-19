@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64(16)
   end
 
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
+
+    return nil if user.nil?
+    user.is_password?(password) ? user : nil
+  end
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
