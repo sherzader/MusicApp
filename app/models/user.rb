@@ -1,11 +1,9 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :password, length: { minimum: 6, allow_nil: false }
+  validates :password, length: { minimum: 6, allow_nil: true }
   validates :password_digest, presence: true
   validates :email, :session_token, presence: true, uniqueness: true
-  validate :generate_session_token, :ensure_session_token,
-                                    :reset_session_token!
 
   # callback after new user created to set session token if none exists
   after_initialize :ensure_session_token

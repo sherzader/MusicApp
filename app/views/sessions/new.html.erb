@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+  <h1>Log in!</h1>
+</head>
+<body>
+  <form action="<%= sessions_url %>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <table>
+      <tr>
+        <th><label for="user_email">Email:</label></th>
+        <th>
+          <input type="text"
+            name="user[email]"
+            id="user_email"
+            value="<%= @user.email %>">
+          </input>
+        </th>
+      </tr>
+      <tr>
+        <th><label for="user_password">Password:</label></th>
+        <th>
+          <input type="text"
+            name="user[password]"
+            id="user_password"
+            value="<%= @user.password %>">
+          </input>
+        </th>
+      </tr>
+    </table>
+    <input type="submit" value="Login">
+    </form>
+  </form>
+</body>
+</html>

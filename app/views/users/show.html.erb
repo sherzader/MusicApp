@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<head>
+  <h1>Users</h1>
+</head>
+<body>
+  <ul>
+  <% User.all.each do |user| %>
+    <li>Email: <%= user.email %></li>
+  <% end %>
+  </ul>
+</body>
+</html>
