@@ -10,4 +10,5 @@ class Band < ActiveRecord::Base
     through: :albums,
     source: :tracks
   )
+  
 end
