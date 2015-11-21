@@ -9,13 +9,14 @@
 <body>
 <!-- login logout buttons -->
   <% if current_user.nil? %>
-    <%= button_to "Log in", sessions_url, method: :create %>
-    <%= button_to "Sign up", users_url, method: :create %>
+    <%= button_to "Log In", new_session_url, method: :get %>
+    <%= button_to "Sign Up", new_user_url, method: :get %>
   <% else %>
     <%= current_user.email %>
-    <%= button_to "Log out", sessions_url, method: :delete %>
+    <%= button_to "Log Out", session_url, method: :delete %>
   <% end %>
 
+<%= render "layouts/errors" %>
 <%= yield %>
 
 </body>

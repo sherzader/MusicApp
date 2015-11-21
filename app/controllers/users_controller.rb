@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :already_logged_in, except: [:show]
+  before_action :logged_in?, except: [:show]
 
   #upon clicking submit in new.html.erb
   def create
@@ -8,10 +8,10 @@ class UsersController < ApplicationController
     if @user.save!
       log_in!(@user)
       #loses information
-      redirect_to user_url(@user) #show users/:id
+      redirect_to user_url(@user) #show -> users/:id
     else
-      flash.now[:errors] = user.errors.full_messages
-      #saves information
+      flash.now[:errors] = @user.errors.full_messages
+      #flash.now persists errors past one request
       render :new
     end
   end
@@ -19,11 +19,9 @@ class UsersController < ApplicationController
   #sign up page
   def new
     @user = User.new
-    render :new
   end
 
   def show
-    #goes to user's show view
   end
 
   private

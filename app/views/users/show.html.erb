@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<head>
-  <h1>Users</h1>
-</head>
-<body>
-  <ul>
-  <% User.all.each do |user| %>
-    <li>Email: <%= user.email %></li>
-  <% end %>
-  </ul>
-</body>
-</html>
+<h1>Your Profile</h1>
+<br>
+<h2>Email: <%= current_user.email %></h2>

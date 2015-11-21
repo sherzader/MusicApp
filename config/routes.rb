@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: redirect("/bands") #bands index
+  root to: redirect("/session/new") #bands index
 
   resources :users, only: [:create, :new, :show]
   # users/1/cats <-- nested resources, only :index

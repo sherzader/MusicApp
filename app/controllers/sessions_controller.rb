@@ -1,15 +1,18 @@
 class SessionsController < ApplicationController
-  before_action :already_logged_in, except: [:destroy]
+  before_action :logged_in?, except: [:destroy]
 
-  def create!
-    user = User.find_by_credentials(session_params)
+  def create
+    user = User.find_by_credentials(
+      params[:user][:email],
+      params[:user][:password]
+    )
 
-    if user.nil?
-      flash.now[:errors] = "Invalid credentials"
-      render :new
+    if user
+      log_in!(user)
+      redirect_to user_url(user)
     else
-      log_in!
-      redirect_to users_url(user)
+      flash[:errors] = "Invalid credentials"
+      redirect_to new_session_url
     end
   end
 
@@ -19,11 +22,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out! #/session/:id destroy, log out page
-    redirect_to new_sessions_url
-  end
-
-  private
-  def session_params
-    params.require(:session).permit(:email, :password)
+    redirect_to new_session_url
   end
 end
