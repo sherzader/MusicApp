@@ -1,20 +1,17 @@
 Rails.application.routes.draw do
+  root to: redirect("/bands") #bands index
+
   resources :users, only: [:create, :new, :show]
   # users/1/cats <-- nested resources, only :index
   # /cats
-  resource :sessions, only: [:create, :new, :destroy]
-  resources :bands
-  resources :bands, only: [:show] do
+  resource :session, only: [:create, :new, :destroy]
+  resources :bands do
     resources :albums, only: [:new]
   end
 
-  resources :albums
-    # resources :albums, only: [:create] do
-      # resources :tracks, only: [:new]
-    # end
-  # end
-  
-  # resources :bands, except: [:show]
-  # resources :albums, except: [:create]
-  resources :tracks
+  resources :albums, except: [:new, :index] do
+    resources :tracks, only: [:new]
+  end
+
+  resources :tracks, except: [:new, :index]
 end
