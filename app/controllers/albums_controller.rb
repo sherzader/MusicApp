@@ -17,6 +17,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
+    #only new is nested under band
     @band = Band.find(params[:band_id])
     @album = Album.new(band_id: params[:band_id])
   end
