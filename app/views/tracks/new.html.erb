@@ -1,9 +1,11 @@
 <h1><%= @album.name %></h1>
 
 <form action="<%= tracks_url %>" method="post">
+  <input type="hidden" name="track[album_id]" value="<%= @album.id %>">
+  <%= auth_token %>
   <label for="track_song">Song:</label>
   <input type="text" name="track[song]" id="track_song">
   <input type="submit" value="Add Track">
 </form>
 
-<% link_to "Back to Album", album_url(@track.album_id) %>
+<%= link_to "Back to Album", album_url(@album.id) %>

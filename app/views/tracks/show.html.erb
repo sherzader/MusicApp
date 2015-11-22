@@ -1,5 +1,4 @@
 <h1><%= @track.album.name %></h1>
-<% @album.tracks.each do |track| %>
-  <h2><%= track.song %></h2>
-  <% end %>
-<% link_to "Back to Album", album_url(@track.album_id) %>
+<h3><%= @track.song %></h3>
+<br>
+<%= link_to "Back to Album", album_url(@track.album_id) %>

@@ -10,6 +10,8 @@
 #
 
 class Track < ActiveRecord::Base
+  validates :song, :album_id, null: false
+  
   belongs_to(
     :album,
     foreign_key: :album_id,
