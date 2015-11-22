@@ -1,0 +1,18 @@
+<% action_url = band.persisted? ? band_url(band) : bands_url %>
+<% http_method = band.persisted? ? "PATCH" : "POST" %>
+
+<form action="<%= action_url %>" method="POST">
+  <input type="hidden" name="_method" value="<%= http_method %>">
+  <%= auth_token %>
+  <label>Name:</label>
+    <input
+      type="text"
+      name="band[name]"
+      value="<%= band.name %>">
+<% if http_method == "PATCH" %>
+  <input type="submit" value="Update">
+<% else %>
+  <input type="submit" name="Create">
+<% end %>
+</form>
+<h3><%= link_to "All Bands", bands_url, method: :get %></h3>

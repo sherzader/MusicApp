@@ -14,10 +14,8 @@
   <% else %>
     <%= current_user.email %>
     <%= button_to "Log Out", session_url, method: :delete %>
-    <h3><%= link_to "Bands", bands_url, method: :get %></h3>
   <% end %>
 
-<%= render "layouts/errors" %>
 <%= yield %>
 
 </body>

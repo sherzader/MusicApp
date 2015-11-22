@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
 
-    if user
+    if user.save!
       log_in!(user)
       redirect_to user_url(user)
     else
-      flash[:errors] = "Invalid credentials"
+      flash[:errors] = ["Invalid user credentials"]
       redirect_to new_session_url
     end
   end

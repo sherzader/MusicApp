@@ -4,11 +4,12 @@ class UsersController < ApplicationController
 
     if @user.save!
       log_in!(@user)
-      #loses information
+      # or render :show
       redirect_to user_url(@user) #show -> users/:id
     else
-      flash.now[:errors] = @user.errors.full_messages
+      flash[:errors] = ["Invalid user credentials"]
       #flash.now persists errors past one request
+      #so must use render, because redirect_to loses info
       render :new
     end
   end

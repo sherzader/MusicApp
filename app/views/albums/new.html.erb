@@ -1,0 +1,5 @@
+<h1>Add Album</h1>
+<br>
+<%= render "form", album: @album %>
+<br>
+<p>More: <%= link_to @album.band.name, band_url(@album.band) %></p>
