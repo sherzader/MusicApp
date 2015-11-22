@@ -16,6 +16,14 @@
     <%= button_to "Log Out", session_url, method: :delete %>
   <% end %>
 
+<!--only shows for invalid user sign up -->
+  <% if flash[:notice] %>
+    <% flash[:notice].each do |msg| %>
+      <ul>
+        <li><%= msg %></li>
+      </ul>
+    <% end %>
+  <% end %>
 <%= yield %>
 
 </body>

@@ -5,17 +5,15 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
 
-    if user.save
+    if user.nil?
+      render :new
+    else
       log_in!(user)
       redirect_to user_url(user)
-    else
-      flash[:errors] = ["Invalid user credentials"]
-      redirect_to new_session_url
     end
   end
 
   def new
-    render :new
   end
 
   def destroy

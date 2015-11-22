@@ -1,9 +1,22 @@
 <h1>New User</h1>
-
+<!--only shows for invalid user sign up
+  <% if flash[:notice] %>
+    <% flash[:notice].each do |msg| %>
+      <ul>
+        <li><%= msg %></li>
+      </ul>
+    <% end %>
+  <% end %>
+<%= yield %>
+-->
 <form action="<%= users_url %>" method="post">
   <%= auth_token %>
   <label for="user_email">Email:</label>
-    <input type="text" name="user[email]" id="user_email">
+    <input
+      type="text"
+      name="user[email]"
+      id="user_email"
+      value="<%= @user.email %>">
   <br>
   <label for="user_password">Password:</label>
   <input type="password" name="user[password]" id="user_password">
