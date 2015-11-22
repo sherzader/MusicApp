@@ -1,11 +1,11 @@
 class BandsController < ApplicationController
-  before_action :logged_in?
+  before_action :require_login!
 
   def create
     @band = Band.new(band_params)
 
-    if @band
-      render :index
+    if @band.save
+      redirect_to band_url(@band)
     else
       flash.now[:errors] = "Invalid band credentials"
       redirect_to :new
@@ -13,7 +13,6 @@ class BandsController < ApplicationController
   end
 
   def new
-    render :new
   end
 
   def show

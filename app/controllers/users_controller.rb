@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, except: [:show]
-
-  #upon clicking submit in new.html.erb
   def create
     @user = User.new(user_params)
 

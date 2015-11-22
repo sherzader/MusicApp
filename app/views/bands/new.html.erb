@@ -1,6 +1,10 @@
+<%= render "layouts/errors" %>
 <h1>List a Band</h1>
+<br>
 <form action="<%= bands_url %>" method="post">
+  <%= auth_token %>
   <label>Name:
+  </label>
     <input type="text" name="band[name]">
   <input type="submit" value="Create">
 </form>
