@@ -4,10 +4,10 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
 
-    if @album.save!
+    if @album.save
       render :show
     else
-      @band = Album.band
+      flash.now[:errors] = @album.errors.full_messages
       render :new
     end
   end

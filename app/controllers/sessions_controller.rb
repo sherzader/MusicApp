@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
 
-    if user.save!
+    if user.save
       log_in!(user)
       redirect_to user_url(user)
     else

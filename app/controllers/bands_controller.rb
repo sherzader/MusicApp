@@ -4,11 +4,11 @@ class BandsController < ApplicationController
   def create
     @band = Band.new(band_params)
 
-    if @band.save!
+    if @band.save
       redirect_to band_url(@band)
     else
-      flash[:errors] = ["Invalid band credentials"]
-      redirect_to bands_url
+      flash.now[:errors] = @band.errors.full_messages
+      render :new
     end
   end
 

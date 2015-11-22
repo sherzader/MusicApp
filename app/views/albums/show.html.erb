@@ -1,4 +1,5 @@
 <h1><%= @album.name %></h1>
+<%= auth_token %>
 <%= link_to "Edit Album", edit_album_url(@album) %>
 <%= link_to "Delete Album", album_url(@album), method: :delete %>
 <br>

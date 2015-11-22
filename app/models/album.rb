@@ -19,7 +19,7 @@ class Album < ActiveRecord::Base
   )
   has_many(
     :tracks,
-    foreign_key: :track_id,
+    foreign_key: :album_id,
     class_name: "Track",
     dependent: :destroy
   )

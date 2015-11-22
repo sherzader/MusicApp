@@ -12,15 +12,14 @@
 
   <label>Band
     <select name="album[band_id]">
-        <% Band.all.each do |band| %>
-            <option
-                <%= "selected" if album.band_id == band.id %>
-                value="<%= band.id %>">
-                <%= band.name %>
-            </option>
-        <% end %>
+      <% Band.all.each do |band| %>
+        <option
+          <%= "selected" if album.band_id == band.id %>
+          value="<%= band.id %>">
+          <%= band.name %>
+        </option>
+      <% end %>
     </select>
   </label>
-
   <input type="submit" value="<%= button_text %>">
 </form>
