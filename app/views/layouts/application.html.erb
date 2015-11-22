@@ -7,11 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default">
     <ul class="nav nav-pills">
       <li><a href="/bands">Bands</a></li>
     </ul>
-  </nav> -->
+  </nav>
 <!-- login logout buttons -->
   <% if current_user.nil? %>
     <%= button_to "Log In", new_session_url, method: :get %>
